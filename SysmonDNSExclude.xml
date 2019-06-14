@@ -1,0 +1,14 @@
+<Sysmon schemaversion="4.21">
+<EventFiltering>
+	<ProcessTerminate onmatch="include">
+	</ProcessTerminate>
+	<ProcessCreate onmatch="exclude">
+		<ParentImage condition="contains">cscript.exe</ParentImage>
+		<ParentCommandLine condition="contains">cscript.exe</ParentCommandLine>
+		<ParentCommandLine condition="contains">netsh.exe</ParentCommandLine>
+		<ParentCommandLine condition="contains">"netsh.exe"</ParentCommandLine>
+		<ParentCommandLine condition="is">C:\WINDOWS\System32\netsh.exe wlan show drivers</ParentCommandLine>
+	</ProcessCreate>
+	<DnsQuery onmatch="exclude"/>
+</EventFiltering>
+</Sysmon>
